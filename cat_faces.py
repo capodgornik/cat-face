@@ -127,7 +127,7 @@ def jump(inky, x):
     This function causes a turtle to "jump" forward the desired amount. 
     
     Parameters:
-    pierre: a turtle that is used when "jumping".
+    inky: a turtle that is used when "jumping".
     x: an integer that determines how far the turtle "jumps".
 
     Returns: None.
