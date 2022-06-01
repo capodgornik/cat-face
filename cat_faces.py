@@ -203,4 +203,5 @@ def main():
     
     input('Press enter to end.')  # keeps the turtle graphics window open
 
-main()
+if __name__ == '__main__':
+    main()
