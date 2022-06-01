@@ -2,7 +2,7 @@ import turtle, random
 
 def catFace(madison, size):
     '''
-    This function draws a cats face.
+    This function draws a cat face.
     
     Parameters:
     madison: a turtle that is used to draw the shape.
@@ -93,6 +93,7 @@ def random_color(rory):
     
     Returns: None.
     '''
+    
     digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 
               'B', 'C', 'D', 'E', 'F']
     pen = '#'
@@ -127,7 +128,7 @@ def jump(inky, x):
     This function causes a turtle to "jump" forward the desired amount. 
     
     Parameters:
-    inky: a turtle that is used when "jumping".
+    pierre: a turtle that is used when "jumping".
     x: an integer that determines how far the turtle "jumps".
 
     Returns: None.
@@ -136,12 +137,39 @@ def jump(inky, x):
     inky.penup()
     inky.forward(x)
     inky.pendown()
-    
     return None  
+ 
+def drawCats(jon, xNum, yNum, times, size, xAdd, yAdd):
+    '''
+    This function calls the catFace fuction in order to draw a cat 
+    face a certain number of times.  
+    
+    Parameters:
+    jon: a turtle that is used to draw the shape(s).
+    xNum: the starting x coordinate for the turtle.
+    yNum: the starting y coordinate for the turtle.
+    times: the number of time to repeat the cat drawing.
+    size: the size of the cat face.
+    xAdd: how far the turtle moves horizontally between drawings.
+    yAdd: how far the turtle moves vertically between drawings.
+
+    Returns: None.
+    '''
+    
+    for i in range(times):
+        turtle.bgcolor(random_background())
+        jon.penup()
+        jon.goto(xNum,yNum)
+        jon.pendown()
+        catFace(jon, size)
+        xNum += xAdd
+        yNum += yAdd  
+
+    return None
   
 def main():
     '''
-    In this program a turtle, pierre, draws 12 cats, calling the random_color and random_background functions
+    In this program a turtle, pierre, draws a 3 by 4 grid of 12 cats, calling the random_color and random_background functions
     to make the colors of the cats and the background each time a cat is drawn random.
     '''
     
@@ -150,46 +178,26 @@ def main():
     pierre.speed(0)
     pierre.shape("turtle")
     
+    size = 50
+    
     x = -250
     y = 150
-    size = 50
-    for i in range(4):
-        background = random_background()
-        turtle.bgcolor(background)
-        pierre.penup()
-        pierre.goto(x,y)
-        pierre.pendown()
-        catFace(pierre, size)
-        x += 150
-        y -= 10
+    drawCats(pierre, x, y, 4, size, 160, -10)
     pierre.penup()
+    
     x = -200
     y = -25
     pierre.goto(x,y)
     pierre.pendown()
-    for i in range(4):
-       background = random_background()
-       turtle.bgcolor(background)
-       pierre.penup()
-       pierre.goto(x,y)
-       pierre.pendown()
-       catFace(pierre, size)
-       x += 150
-       y += 20
+    drawCats(pierre, x, y, 4, size, 150, 20)
     pierre.penup()
+    
     x = -250
     y = -150
     pierre.goto(x,y)
     pierre.pendown()
-    for i in range(4):
-       background = random_background()
-       turtle.bgcolor(background)
-       pierre.penup()
-       pierre.goto(x,y)
-       pierre.pendown()
-       catFace(pierre, size)
-       x += 150
-       y -= 20
+    drawCats(pierre, x, y, 4, size, 150, -20)
+    
     pierre.setheading(0)
     jump(pierre, 100)
     
