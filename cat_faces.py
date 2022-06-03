@@ -163,10 +163,12 @@ def catMouth(stella, size):
     
 def random_color(rory):
     '''
-    This function sets the pencolor and fillcolor of a turtle to random colors.
+    This function sets the pencolor and fillcolor of a turtle to 
+    random colors.
     
     Parameters:
-    rory: a turtle that draws with the pencolor and fillcolor determined in this function. 
+    rory: a turtle that draws with the pencolor and fillcolor 
+    determined in this function. 
     
     Returns: None.
     '''
@@ -255,7 +257,8 @@ def main():
     '''
     In this program a turtle, pierre, draws a 3 by 4 grid of 12 cats, 
     calling the random_color and random_background functions to make 
-    the colors of the cats and the background each time a cat is drawn random.
+    the colors of the cats and the background each time a cat is drawn 
+    random.
     '''
     
     pierre = turtle.Turtle()
