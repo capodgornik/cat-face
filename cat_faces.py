@@ -1,27 +1,67 @@
+'''
+Author: Celine Podgornik
+
+Description:
+This program uses Turtle graphics to draw a 3 by 4 grid of cat faces.
+'''
+
 import turtle, random
 
-def catFace(madison, size):
+def randomColor():
     '''
-    This function draws a cat face.
+    This function determines a random color. 
+    
+    Parameters: None.
+
+    Returns: A string representing a color.
+    '''
+    
+    digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 
+              'B', 'C', 'D', 'E', 'F']
+    color = '#'
+    for i in range(6):
+        color += digits[random.randrange(16)]
+    
+    return color 
+
+def randomPenFillColor(rory):
+    '''
+    This function sets the pencolor and fillcolor of a turtle to 
+    random colors.
     
     Parameters:
-    madison: a turtle that is used to draw the shape.
-    size: an integer that determines the size of the shape.
+    rory: a turtle that draws with the pencolor and fillcolor 
+    determined in this function. 
+    
+    Returns: None.
+    '''
+    
+    rory.pencolor(randomColor())
+    rory.fillcolor(randomColor())
+    rory.begin_fill()
+    
+    return None 
+  
+def jump(inky, xNum):
+    '''
+    This function causes a turtle to "jump" forward the desired amount. 
+    
+    Parameters:
+    inky: a turtle that is used when "jumping".
+    xNum: an integer that determines how far the turtle "jumps".
 
     Returns: None.
     '''
     
-    catHead(madison, size)
-    catEars(madison,size)
-    catEyes(madison, size)
-    catNose(madison, size)
-    catMouth(madison, size)
+    inky.penup()
+    inky.forward(xNum)
+    inky.pendown()
     
-    return None
+    return None 
 
-def catHead(mae, size):
+def catFace(mae, size):
     '''
-    This function draws the head for the catFace function.
+    This function draws the outside of the face for the catHead function.
     
     Parameters:
     mae: a turtle that is used to draw the shape.
@@ -30,8 +70,7 @@ def catHead(mae, size):
     Returns: None.
     '''
     
-    random_color(mae)
-    mae.begin_fill()
+    randomPenFillColor(mae)
     mae.right(72)
     mae.forward(size)
     for i in range(4):
@@ -43,7 +82,7 @@ def catHead(mae, size):
 
 def catEars(brie, size):
     '''
-    This function draws the ears for the catFace function.
+    This function draws the ears for the catHead function.
     
     Parameters:
     brie: a turtle that is used to draw the shape.
@@ -52,32 +91,27 @@ def catEars(brie, size):
     Returns: None.
     '''
     
-    #First ear:
-    brie.backward(size)
-    brie.forward(size)
-    random_color(brie)
-    brie.begin_fill()
+    #first ear
+    randomPenFillColor(brie)
     for i in range(2):
         brie.right(120)
         brie.forward(size)  
     brie.end_fill()
-    #Second ear:
-    random_color(brie)
-    brie.begin_fill()
+    
+    #second ear
+    randomPenFillColor(brie)
     brie.left(50)
     brie.forward(size)
     for i in range(2):
         brie.right(120)
         brie.forward(size)
-    brie.backward(size)
-    brie.left(120)
     brie.end_fill()
 
     return None
 
 def catEyes(alice, size):
     '''
-    This function draws the eyes for the catFace function.
+    This function draws the eyes for the catHead function.
     
     Parameters:
     alice: a turtle that is used to draw the shape.
@@ -85,55 +119,56 @@ def catEyes(alice, size):
 
     Returns: None.
     '''
-
-    alice.right(87)
+    
+    #first eye
+    alice.backward(size)
+    alice.left(33)
     alice.penup()
     alice.forward(size/2)
     alice.pendown()
-    random_color(alice)
-    alice.begin_fill()
+    randomPenFillColor(alice)
     alice.circle(size/15)
     alice.end_fill()
+    
+    #second eye
     alice.penup()
     alice.forward(size*5/8)
     alice.pendown()
-    random_color(alice)
-    alice.begin_fill()
+    randomPenFillColor(alice)
     alice.circle(size/15)
     alice.end_fill()
     
     return None
 
-def catNose(steven, size):
+def catNose(eliza, size):
     '''
-    This function draws the nose for the catFace function.
+    This function draws the nose for the catHead function.
     
     Parameters:
-    steven: a turtle that is used to draw the shape.
+    eliza: a turtle that is used to draw the shape.
     size: an integer that determines the size of the shape.
 
     Returns: None.
     '''
 
-    steven.right(180)
-    steven.penup()
-    steven.forward(size/2.5)
-    steven.right(90)
-    steven.forward(size/3)
-    steven.pendown()
-    steven.right(90)
-    random_color(steven)
-    steven.begin_fill()
+    eliza.right(180)
+    eliza.penup()
+    eliza.forward(size/2.5)
+    eliza.right(90)
+    eliza.forward(size/3)
+    eliza.pendown()
+    eliza.right(90)
+    randomPenFillColor(eliza)
     for i in range(5):
-        steven.forward(size/5)
-        steven.left(120)
-    steven.end_fill()
+        eliza.forward(size/5)
+        eliza.left(120)
+    eliza.end_fill()
 
     return None
     
 def catMouth(stella, size):
     '''
-    This function draws the mouth for the catFace function.
+    This function draws the mouth for the catHead function.
     
     Parameters:
     stella: a turtle that is used to draw the shape.
@@ -160,104 +195,59 @@ def catMouth(stella, size):
 
     return None
     
-def random_color(rory):
+def catHead(madison, size):
     '''
-    This function sets the pencolor and fillcolor of a turtle to 
-    random colors.
+    This function draws a cat head.
     
     Parameters:
-    rory: a turtle that draws with the pencolor and fillcolor 
-    determined in this function. 
-    
-    Returns: None.
-    '''
-    
-    digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 
-              'B', 'C', 'D', 'E', 'F']
-    pen = '#'
-    fill = '#'
-    for i in range(6):
-        pen += digits[random.randrange(16)]
-        fill += digits[random.randrange(16)]
-    rory.pencolor(pen)
-    rory.fillcolor(fill)
-    
-    return None
-  
-def random_background():
-    '''
-    This function determines a random color. 
-    
-    Parameters: None.
-
-    Returns: A string representing a color.
-    '''
-    
-    digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 
-              'B', 'C', 'D', 'E', 'F']
-    color = '#'
-    for i in range(6):
-        color += digits[random.randrange(16)]
-    
-    return color  
-  
-def jump(inky, x):
-    '''
-    This function causes a turtle to "jump" forward the desired amount. 
-    
-    Parameters:
-    pierre: a turtle that is used when "jumping".
-    x: an integer that determines how far the turtle "jumps".
+    madison: a turtle that is used to draw the shape.
+    size: an integer that determines the size of the shape.
 
     Returns: None.
     '''
     
-    inky.penup()
-    inky.forward(x)
-    inky.pendown()
+    catFace(madison, size)
+    catEars(madison,size)
+    catEyes(madison, size)
+    catNose(madison, size)
+    catMouth(madison, size)
     
-    return None  
+    return None     
  
 def drawCatRow(jon, xNum, yNum, times, size, xAdd, yAdd):
     '''
-    This function calls the catFace fuction in order to draw a cat 
-    face a given number of times.  
+    This function calls the catHead fuction in order to draw a cat 
+    head a given number of times.  
     
     Parameters:
     jon: a turtle that is used to draw the shape(s).
     xNum: the starting x coordinate for the turtle.
     yNum: the starting y coordinate for the turtle.
     times: the number of times to repeat the cat drawing.
-    size: the size of the cat face.
+    size: the size of the cat head.
     xAdd: how far the turtle moves horizontally between drawings.
     yAdd: how far the turtle moves vertically between drawings.
 
     Returns: None.
     '''
     
-    jon.penup()
-    jon.goto(xNum, yNum)
-    jon.pendown()
-    
     for i in range(times):
-        turtle.bgcolor(random_background())
+        turtle.bgcolor(randomColor())
         jon.penup()
         jon.goto(xNum,yNum)
         jon.pendown()
-        catFace(jon, size)
+        catHead(jon, size)
         xNum += xAdd
         yNum += yAdd  
-    
-    jon.penup()
 
     return None 
   
 def main():
     '''
     In this program a turtle, pierre, draws a 3 by 4 grid of 12 cats, 
-    calling the random_color and random_background functions to make 
-    the colors of the cats and the background each time a cat is drawn 
-    random.
+    calling the randomPenFillColor and randomColor functions to make 
+    the colors of the cats and the background random each time a cat is 
+    drawn.
     '''
     
     pierre = turtle.Turtle()
@@ -271,7 +261,9 @@ def main():
     drawCatRow(pierre, -250, 150, times, size, 160, -10)
     drawCatRow(pierre, -200, -25, times, size, 150, 20)
     drawCatRow(pierre, -250, -150, times, size, 150, -20)
-
+    
+    #moves turtle off of the drawing
+    pierre.penup()
     pierre.setheading(0)
     jump(pierre, 100)
     
