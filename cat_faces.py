@@ -37,6 +37,7 @@ def catHead(mae, size):
     for i in range(4):
         mae.left(72)
         mae.forward(size)
+    mae.end_fill()
         
     return None
 
@@ -52,7 +53,6 @@ def catEars(brie, size):
     '''
     
     #First ear:
-    brie.end_fill()
     brie.backward(size)
     brie.forward(size)
     random_color(brie)
@@ -66,10 +66,9 @@ def catEars(brie, size):
     brie.begin_fill()
     brie.left(50)
     brie.forward(size)
-    brie.right(120)
-    brie.forward(size)
-    brie.right(120)
-    brie.forward(size)
+    for i in range(2):
+        brie.right(120)
+        brie.forward(size)
     brie.backward(size)
     brie.left(120)
     brie.end_fill()
